@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color-1: #000000;
+    --primary-color-2: #ffffff;
+    --primary-color-3: #4ea9b2;
+
+    --secondary-color-1: #999999;
+    --secondary-color-2: #1b1620;
+    --secondary-color-3: #747480;
+
+    --tertiary-color-1: #242424;
+    --tertiary-color-2: #21a6b2;
+    --tertiary-color-3: #5faab1;
+
+    --other-color-1: #6155f5;
+    --other-color-2: #131311;
+    --other-color-3: #ffcd29;
+    --other-color-4: #cca421;
+    --other-color-5: #f24822;
+    --other-color-6: #c23a1b;
+    --other-color-7: #bbd2d8;
+    --other-color-8: #2a2222;
+    --other-color-9: #f2f2f7;
+    --other-color-10: #ff8d28;
+    --other-color-11: #cb30e0;
+    --other-color-12: #a58080;
+    --other-color-13: #343a40;
+    --other-color-14: #212529;
+    --other-color-15: #9747ff;
+    --other-color-16: #7939cc;
+    --other-color-17: #0d99ff;
+    --other-color-18: #0a7acc;
+    --other-color-19: #e0e0e0;
+    --other-color-20: #14ae5c;
+    --other-color-21: #108b4a;
+    --other-color-22: #ffa629;
+    --other-color-23: #cc8521;
+    --other-color-24: #1f1b1b;
+}
+
+/* Font Family: Product Sans
+Font Size: 14px
+Font Weight: 400
+Font Family: Product Sans Black
+Font Size: 18px, 24px, 32px, 44px, 56px, 64px, 96px
+Font Weight: 900
+Font Family: Neue Montreal
+Font Size: 12px, 13px, 14px, 16px, 18px, 18.67px, 20px, 21.33px, 22px, 24px, 32px
+Font Weight: 400, 700, 500
+Font Family: Product Sans Medium
+Font Size: 16px, 18px
+Font Weight: 500
+Font Family: Satisfy
+Font Size: 32px
+Font Weight: 400
+Font Family: Roboto
+Font Size: 12px
+Font Weight: 400 */
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--other-color-9);
+    color: var(--other-color-8);
+    font-family: "Product Sans", "Neue Montreal", "Roboto", "Satisfy";
+}
+
+.container {
+    width: 100%;
+}
+
+/* --- NAVBAR BASE --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+    background: #ffffff;
+    z-index: 1000;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- THE FLOATING PILL EFFECT --- */
+.navbar.scrolled {
+    top: 20px;
+    width: 90%;
+    left: 5%;
+    height: 65px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    /* Glassmorphism */
+    padding: 0 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Indie Flower";
+    color: var(--other-color-8);
+}
+
+.logo img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--other-color-1);
+    color: var(--other-color-9);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-links img {
+    height: 20px;
+    width: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #007bff;
+}
+
+/* --- MOBILE RESPONSIVE --- */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: -100%;
+        /* Hidden off-top */
+        left: 0;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        padding: 100px 0 40px 0;
+        transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: -1;
+        /* Behind the main bar */
+        border-radius: 0 0 30px 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links.active {
+        top: 0;
+    }
+
+    /* Animate Hamburger to X */
+    .menu-toggle.open .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .menu-toggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.open .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+.hero {
+    padding-top: 150px;
+    text-align: center;
+}
